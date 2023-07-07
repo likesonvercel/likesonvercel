@@ -3,10 +3,12 @@ import dotenv from "dotenv";
 import path from "path";
 import updateLikes from "./controllers/updateLikes.js";
 import getLikes from "./controllers/getLikes.js";
+import cors from "cors"
 
 // basic configurations
 dotenv.config();
 const app = express();
+app.use(cors);
 
 const router = express.Router();
 router.route("/").get(getLikes);
