@@ -8,7 +8,7 @@ import cors from "cors"
 // basic configurations
 dotenv.config();
 const app = express();
-app.use(cors);
+app.use(cors());
 
 const router = express.Router();
 router.route("/").get(getLikes);
