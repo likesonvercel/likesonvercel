@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 import updateLikes from "./controllers/updateLikes.js";
 import getLikes from "./controllers/getLikes.js";
-import cors from "cors"
+import cors from "cors";
 
 // basic configurations
 dotenv.config();
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use("/api", router);
 
 app.get("/", (req, res) => {
-    res.send("Vulnurable to love mate, lmao");
+  res.send("Vulnurable to love mate, lmao");
 });
 
 // port configurations
