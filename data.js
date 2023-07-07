@@ -1,7 +1,7 @@
 const blogPosts = [
   {
     title: "auth-architecture",
-    likes: 3,
+    likes: 0,
   },
   {
     title: "being-human",
