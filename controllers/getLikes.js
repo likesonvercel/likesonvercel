@@ -9,10 +9,14 @@ const getLikes = asyncHandler(async (req, res) => {
       title: title,
       likes: 0,
     });
+    return res.status(200).json({
+      likes: 0,
+    });
+  } else {
+    return res.status(200).json({
+      likes: blogPost.likes,
+    });
   }
-  return res.status(200).json({
-    likes: 0,
-  });
 });
 
 export default getLikes;
