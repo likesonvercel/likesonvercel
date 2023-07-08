@@ -1,21 +1,14 @@
 import asyncHandler from "express-async-handler";
-import blogPosts from "../data.js";
-import replace from "replace-in-file";
+import Likes from "../models/likesModel.js";
 
 const updateLikes = asyncHandler(async (req, res) => {
-  let { title } = req.body;
-  try {
-    let { likes } = blogPosts.find((post) => post.title === title);
-    const options = {
-      files: "data.js",
-      from: new RegExp(`(title: "${title}",\\s*likes: )\\d+`),
-      to: `$1${likes + 1}`,
-    };
-    await replace(options);
-  } catch (err) {
-    return res.sendStatus(500);
-  }
-  return res.sendStatus(200);
+  const { title } = req.body;
+  const blogPost = await Likes.findOne({ title: title });
+  blogPost.likes += 1;
+  await blogPost.save();
+  return res.status(200).json({
+    likes: blogPost.likes,
+  });
 });
 
 export default updateLikes;

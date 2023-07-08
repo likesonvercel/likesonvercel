@@ -1,10 +1,18 @@
 import asyncHandler from "express-async-handler";
-import blogPosts from "../data.js";
+import Likes from "../models/likesModel.js";
 
 const getLikes = asyncHandler(async (req, res) => {
   const { title } = req.query;
-  let { likes } = blogPosts.find((post) => post.title === title);
-  return res.json({ likes });
+  const blogPost = await Likes.findOne({ title: title });
+  if (!blogPost) {
+    await Likes.create({
+      title: title,
+      likes: 0,
+    });
+  }
+  return res.status(200).json({
+    likes: blogPost.likes,
+  });
 });
 
 export default getLikes;
