@@ -1,14 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
-import path from "path";
-import updateLikes from "./controllers/updateLikes.js";
 import getLikes from "./controllers/getLikes.js";
+import updateLikes from "./controllers/updateLikes.js";
 import cors from "cors";
+import connectDB from "./config/db.js";
 
 // basic configurations
 dotenv.config();
 const app = express();
 app.use(cors());
+
+// database configurations
+await connectDB();
 
 const router = express.Router();
 router.route("/").get(getLikes);
