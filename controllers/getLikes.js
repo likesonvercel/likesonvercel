@@ -11,7 +11,7 @@ const getLikes = asyncHandler(async (req, res) => {
     });
   }
   return res.status(200).json({
-    likes: blogPost.likes,
+    likes: 0,
   });
 });
 
