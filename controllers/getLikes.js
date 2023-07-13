@@ -8,13 +8,16 @@ const getLikes = asyncHandler(async (req, res) => {
     await Likes.create({
       title: title,
       likes: 0,
+      comments: [],
     });
     return res.status(200).json({
       likes: 0,
+      comments: [],
     });
   } else {
     return res.status(200).json({
       likes: blogPost.likes,
+      comments: blogPost.comments,
     });
   }
 });

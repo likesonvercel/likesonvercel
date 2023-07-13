@@ -4,6 +4,7 @@ import getLikes from "./controllers/getLikes.js";
 import updateLikes from "./controllers/updateLikes.js";
 import cors from "cors";
 import connectDB from "./config/db.js";
+import postComments from "./controllers/postComments.js";
 
 // basic configurations
 dotenv.config();
@@ -16,6 +17,7 @@ await connectDB();
 const router = express.Router();
 router.route("/").get(getLikes);
 router.route("/").post(updateLikes);
+router.route("/comment").post(postComments);
 
 // controllers
 app.use(express.json());

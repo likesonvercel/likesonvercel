@@ -10,6 +10,9 @@ const likeSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    comments: {
+      type: [String],
+    },
   },
   {
     timestamps: true,
